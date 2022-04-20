@@ -4,7 +4,7 @@ import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
 
-root = tk()
+root = tk.Tk()
 root.title('Primary Table for Import')
 
 root.filename = filedialog.askopenfilename(initialdir= "/Macintosh HD/Users/matthewventura/Documents", title="Select an Excel File", filetypes=(("xls files", "*.xls"),("xlsx files", "*.xlsx")))
