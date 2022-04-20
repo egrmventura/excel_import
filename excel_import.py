@@ -6,9 +6,24 @@ from tkinter import filedialog
 
 root = tk.Tk()
 root.title('Primary Table for Import')
+root.geometry('600x600')
 
-root.filename = filedialog.askopenfilename(initialdir= "/Macintosh HD/Users/matthewventura/Documents", title="Select an Excel File", filetypes=(("xls files", "*.xls"),("xlsx files", "*.xlsx")))
-'''
+global file_list
+
+def select_file():
+    filetypes_lst = (("Excel Files", "*.xls*"), ("xls files","*.xls"), ("all files", "*.*"))
+    title_str = "Select File"
+    dir_str = "/Macintosh HD/Users/matthewventura/Documents"
+    root.filename = filedialog.askopenfilename(parent = root, initialdir=dir_str, title= title_str, filetypes= filetypes_lst)
+    select_label = tk.Label(root, text=root.filename).pack()
+    
+
+tk.Button(root, test = "Select File", command=select_file).pack
+
+root.mainloop()
+'''root.filename = filedialog.askopenfilename(initialdir= "/Macintosh HD/Users/matthewventura/Documents", title="Select an Excel File", filetypes=(("Excel Files", "*.xls*"), ("xls files","*.xls"), ("all files", "*.*")))
+
+
 ent1 = tk.Entry(root,font=40)
 ent1.grid(row=2,col=2)
 '''
