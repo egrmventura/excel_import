@@ -4,13 +4,47 @@ import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
 
+class Window(tk.Frame):
+    def __init__(self, master = None):
+        tk.Frame.__init__(self,master)
+        self.master = master
+        self.init_window()
+
+    def init_window(self):
+        self.master.title("Form Title")
+        self.pack(fill = 'both', expand = 1)
+        self.filepath = tk.StringVar()
+
+        quitBtn = tk.Button(self, text = 'Quit', command = self.close_window)
+        quitBtn.place(x = 0, y = 0)
+
+        browseBtn = tk.Button(self, text = 'Browse', command = self.first_browser)
+        browseBtn.place(x = 0, y = 30)
+
+        filepathText = tk.Entry(self, textvariable= self.filepath)
+        filepathText.pack()
+
+    def close_window(self):
+        root.destroy()
+
+    def show_file_browser(self):
+        self.filename = filedialog.askopenfilename()
+        return self.filename
+
+    def first_browser(self):
+        file = self.show_file_browser()
+        self.filepath.set(file)
+
+
 root = tk.Tk()
 root.title('Primary Table for Import')
 root.geometry('600x600')
 
-global file_list
+app = Window(root)
 
-def select_file():
+root.mainloop()
+
+'''def select_file():
     filetypes_lst = (("Excel Files", "*.xls*"), ("xls files","*.xls"), ("all files", "*.*"))
     title_str = "Select File"
     dir_str = "/Macintosh HD/Users/matthewventura/Documents"
@@ -19,8 +53,9 @@ def select_file():
     
 
 tk.Button(root, test = "Select File", command=select_file).pack
+'''
 
-root.mainloop()
+
 '''root.filename = filedialog.askopenfilename(initialdir= "/Macintosh HD/Users/matthewventura/Documents", title="Select an Excel File", filetypes=(("Excel Files", "*.xls*"), ("xls files","*.xls"), ("all files", "*.*")))
 
 
