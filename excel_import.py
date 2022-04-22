@@ -11,17 +11,18 @@ class Window(tk.Frame):
         self.init_window()
 
     def init_window(self):
-        self.master.title("Form Title")
+        self.master.title("Import/Merge Excel Files")
         self.pack(fill = 'both', expand = 1)
         self.filepath = tk.StringVar()
 
         quitBtn = tk.Button(self, text = 'Quit', command = self.close_window)
         quitBtn.place(x = 0, y = 0)
 
-        browseBtn = tk.Button(self, text = 'Browse', command = self.first_browser)
-        browseBtn.place(x = 0, y = 30)
+        browseBtn1 = tk.Button(self, text = 'Browse Root', command = self.first_browser)
+        browseBtn1.place(x = 880, y = 0)
+        #browseBtn1.pack(side= tk.Right, x = 0, y = 30)
 
-        filepathText = tk.Entry(self, textvariable= self.filepath)
+        filepathText = tk.Entry(self, textvariable= self.filepath, width= 80)
         filepathText.pack()
 
     def close_window(self):
@@ -38,7 +39,7 @@ class Window(tk.Frame):
 
 root = tk.Tk()
 root.title('Primary Table for Import')
-root.geometry('600x600')
+root.geometry('1000x400')
 
 app = Window(root)
 
